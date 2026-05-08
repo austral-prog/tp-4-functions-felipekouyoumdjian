@@ -12,17 +12,16 @@ def apply_tax(price, tax_pct):
 
 def final_price(price, quantity, discount_pct, tax_pct):
     subtotal = price * quantity
-    descuento = apply_discount(subtotal, discount_pct) 
-    impuesto = apply_tax(descuento, tax_pct)
-    
-    return round(impuesto, 2) 
+    with_discount = apply_discount(subtotal, discount_pct)
+    with_tax = apply_tax(with_discount, tax_pct)
+    return round(with_tax, 2)
+
 
 def best_deal(price_a, qty_a, disc_a, price_b, qty_b, disc_b, tax_pct):
-    A = final_price(price_a, qty_a, disc_a, tax_pct)
-    B = final_price(price_b, qty_b, disc_b, tax_pct)
+    final_a = final_price(price_a, qty_a, disc_a, tax_pct)
+    final_b = final_price(price_b, qty_b, disc_b, tax_pct)
 
-    if A <= B:
+    if final_a <= final_b:
         return "A"
-    else: 
+    else:
         return "B"
-    

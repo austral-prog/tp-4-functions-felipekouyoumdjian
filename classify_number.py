@@ -11,9 +11,8 @@ def is_positive(n):
 # ---- Función a implementar ----
 
 def classify_number(n):
-    
     if n == 0:
-        return "Zero"
+        return "zero"
     
     if is_positive(n):
         if is_even(n):
